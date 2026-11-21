@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>致强视频 · 电视端图标交付（「强」字版 v4.6）</title>
+<style>
+:root{
+  --bg:#0d1220; --panel:#151d30; --panel2:#1b2540; --line:#2a3654;
+  --txt:#eaf0fb; --sub:#9aaac8; --dim:#6f80a2;
+  --cyan:#22D3EE; --blue:#1E3A8A; --deep:#0B1B3A; --white:#fff;
+}
+html[data-theme="light"]{
+  --bg:#eef1f6; --panel:#ffffff; --panel2:#f5f7fb; --line:#d8dfea;
+  --txt:#16203a; --sub:#5a6b8a; --dim:#8593ad;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:0 0 80px;background:var(--bg);color:var(--txt);
+  font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+  padding:44px 0 28px;border-bottom:1px solid var(--line);margin-bottom:36px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:16px}
+.brand img{width:56px;height:56px;border-radius:13px}
+h1{font-size:27px;margin:0;letter-spacing:.5px;font-weight:700}
+.tagline{color:var(--sub);font-size:14px;margin-top:6px}
+.themeBtn{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
+  border-radius:10px;padding:10px 18px;font-size:14px;cursor:pointer;transition:.2s}
+.themeBtn:hover{border-color:var(--cyan)}
+h2{font-size:20px;margin:44px 0 8px;display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:4px;height:20px;border-radius:3px;background:var(--cyan)}
+.lead{color:var(--sub);font-size:14px;margin:0 0 22px;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  padding:20px;transition:.25s}
+.card:hover{border-color:#3c558c;transform:translateY(-2px)}
+.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.card-head b{font-size:16px}
+.badge{font-size:11px;color:var(--cyan);border:1px solid var(--cyan);
+  border-radius:20px;padding:3px 10px;opacity:.9}
+.stage{border-radius:12px;padding:22px 16px;display:flex;align-items:center;
+  justify-content:center;min-height:190px;background:#0a1020;
+  transition:background .25s;overflow:hidden}
+html[data-theme="light"] .stage{background:#e9edf4}
+.stage img{max-width:100%;max-height:230px;display:block;
+  filter:drop-shadow(0 8px 20px rgba(0,0,0,.45))}
+.stage.sq img{max-width:210px}
+.stage.bn img{max-width:100%}
+.stage.wd img{max-width:100%}
+.toggle{display:flex;gap:8px;margin-top:14px}
+.toggle button{flex:1;background:var(--panel2);color:var(--sub);border:1px solid var(--line);
+  border-radius:8px;padding:8px;font-size:12px;cursor:pointer}
+.toggle button.on{color:#06121e;background:var(--cyan);border-color:var(--cyan);font-weight:700}
+.meta{margin-top:14px;font-size:12.5px;color:var(--sub);line-height:1.9}
+.meta b{color:var(--txt);font-weight:600}
+table{width:100%;border-collapse:collapse;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px}
+th,td{padding:12px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:var(--sub);font-weight:600;font-size:12.5px}
+tr:last-child td{border-bottom:none}
+td code{background:var(--panel2);padding:2px 6px;border-radius:5px;
+  font-family:Consolas,Monaco,monospace;font-size:12px;color:var(--cyan)}
+.old{color:#f08a8a}.new{color:#6ee7a8}
+.swatches{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.sw{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:12px;width:150px}
+.sw i{display:block;height:44px;border-radius:8px;margin-bottom:10px}
+.sw b{font-size:12.5px;display:block;font-family:Consolas,monospace}
+.sw span{font-size:11.5px;color:var(--sub)}
+pre{background:#080d18;color:#cfe0ff;border:1px solid var(--line);border-radius:12px;
+  padding:18px 20px;overflow-x:auto;font-size:12.5px;line-height:1.75;
+  font-family:Consolas,Monaco,monospace;margin:0}
+pre .k{color:#7dd3fc}pre .v{color:#a7f3d0}pre .c{color:#64748b}
+.note{background:var(--panel);border-left:3px solid var(--cyan);
+  border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;
+  font-size:13.5px;color:var(--sub);line-height:1.85}
+.note b{color:var(--txt)}
+ul.tips{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+ul.tips li{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:15px 18px;font-size:13.5px;line-height:1.8}
+ul.tips li b{color:var(--cyan)}
+.filetree{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:18px 20px;font-family:Consolas,Monaco,monospace;font-size:12.5px;
+  color:var(--sub);line-height:1.85;white-space:pre-wrap}
+footer{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);
+  color:var(--dim);font-size:12px;line-height:1.9}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">
+    <img src="01-square/zq_square_512.png" alt="致强视频">
+    <div>
+      <h1>致强视频 · 电视端图标交付 <span style="color:var(--cyan);font-size:16px;font-weight:700">「强」字版</span></h1>
+      <div class="tagline">三款规格 / 全密度适配 / 焦点态 / 已接入工程 · <b style="color:var(--cyan)">v4.6 (code 62)</b></div>
+    </div>
+  </div>
+  <button class="themeBtn" onclick="toggleTheme()">切换壁纸：深色 / 浅色</button>
+</header>
+
+<h2>三款图标</h2>
+<p class="lead">点击每张卡片下方按钮可切换「正常态 / 焦点态」，右上角切换深、浅壁纸，检验不同电视桌面环境下的可读性。</p>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-head"><b>01 正方形主图标</b><span class="badge">1 : 1</span></div>
+    <div class="stage sq" id="s1"><img id="i1" src="01-square/zq_square_512.png" alt="正方形图标"></div>
+    <div class="toggle">
+      <button class="on" onclick="setImg(1,false,this)">正常态</button>
+      <button onclick="setImg(1,true,this)">焦点态</button>
+    </div>
+    <div class="meta">
+      <b>512 / 256 / 128 px</b> · PNG + SVG<br>
+      用途：应用商店、桌面主入口、设置页<br>
+      焦点态：青色外发光 + 白色描边 + 放大 1.08（放大由代码控制）<br>
+      圆角 22%，内容收在 82% 安全区内
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><b>02 横版长方形</b><span class="badge">16 : 9</span></div>
+    <div class="stage bn" id="s2"><img id="i2" src="02-banner-16x9/zq_banner_640x360.png" alt="横版图标"></div>
+    <div class="toggle">
+      <button class="on" onclick="setImg(2,false,this)">正常态</button>
+      <button onclick="setImg(2,true,this)">焦点态</button>
+    </div>
+    <div class="meta">
+      <b>640×360 / 320×180 / 1280×720</b> · PNG + SVG<br>
+      用途：<b>Android TV 主屏幕 Banner</b>、首页推荐位<br>
+      焦点态：提亮 15% + 2px 青色描边<br>
+      左 40% 符号区，右 60% 品牌名 + slogan
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><b>03 超宽横条</b><span class="badge">3 : 1</span></div>
+    <div class="stage wd" id="s3"><img id="i3" src="03-wide-3x1/zq_wide_960x320.png" alt="超宽图标"></div>
+    <div class="toggle">
+      <button class="on" onclick="setImg(3,false,this)">正常态</button>
+      <button onclick="setImg(3,true,this)">焦点态</button>
+    </div>
+    <div class="meta">
+      <b>960×320 / 480×160 / 1920×640</b> · PNG + SVG<br>
+      用途：顶部导航栏、专题横条、聚合页入口<br>
+      焦点态：底部青色进度条 + 轻微上浮<br>
+      左端 96×96 Logo + 中部品牌名，右侧留白给动态控件
+    </div>
+  </div>
+</div>
+
+<h2>本次改版：品牌符号改为「强」</h2>
+<p class="lead">2026-11-08 图标定稿，当前 APK 为 v4.6（2026-11-16）。原设计语言（深蓝渐变、白字、青色播放三角、slogan）全部保留，仅把核心符号由「致」换成「强」，并针对新字重排版面。品牌名仍为「致强视频」。</p>
+<table>
+<tr><th style="width:23%">改动点</th><th>说明</th><th style="width:30%">结果</th></tr>
+<tr><td class="old">符号换字</td><td>原三款图标统一为「致」字</td><td class="new">三款 PNG / SVG、各密度资源、焦点态、变体全量重出，统一为「强」字</td></tr>
+<tr><td class="old">字号过大</td><td>「强」字笔画更密、外框更方；沿用旧字号会顶满画布，横版还会挤到品牌名</td><td class="new">三款字号统一下调一档（0.45 / 0.41 / 0.42），四周留白恢复</td></tr>
+<tr><td class="old">播放三角压笔画</td><td>旧坐标下青三角与「强」右下捺笔相撞，3:1 版甚至叠在字上</td><td class="new">三角整体外移并缩小，落在右下留白区，三款均不压字</td></tr>
+<tr><td class="old">矢量源与位图不一致</td><td>旧生成脚本把符号字硬编码进 SVG，改 PNG 时 SVG 没跟着变</td><td class="new">SVG 文字节点改为读取同一个 GLYPH 常量，改一处整套同步</td></tr>
+<tr><td class="old">输出路径写死</td><td>脚本 ROOT 曾指向上级 DuShetv/app-icons，容易生成到错误目录</td><td class="new">改为按脚本所在位置推导，放到哪套 app-icons 就重出哪套</td></tr>
+</table>
+<div class="note">历史修正一并保留：汉字用微软雅黑 Bold 真实字体渲染（修正 AI 错笔画与幻觉）、去除生成水印、透明底改为不透明深蓝底、严格 1:1 / 16:9 / 3:1 规格与多密度档、3:1 版 Logo 与品牌名留 3% 呼吸区。</div>
+
+<h2>色值规范</h2>
+<div class="swatches">
+  <div class="sw"><i style="background:#0B1B3A"></i><b>#0B1B3A</b><span>底色 / 右上深色端</span></div>
+  <div class="sw"><i style="background:#1E3A8A"></i><b>#1E3A8A</b><span>品牌主色</span></div>
+  <div class="sw"><i style="background:#22D3EE"></i><b>#22D3EE</b><span>辅色 / 焦点态 / 播放三角</span></div>
+  <div class="sw"><i style="background:#FFFFFF;border:1px solid #d8dfea"></i><b>#FFFFFF</b><span>文字</span></div>
+  <div class="sw"><i style="background:#A3C2E6"></i><b>#A3C2E6</b><span>slogan 辅助文字</span></div>
+</div>
+<div class="note">渐变方向为 <b>左下亮 → 右上深</b>。这样横版右侧文字区更暗，白字对比更强；同时避免纯黑融进电视深色桌面。三款共用同一套渐变，并排摆放时视觉重量一致。</div>
+
+<h2>接入 Android TV</h2>
+<p class="lead">关键一点：<b>640×360 正好是 Android TV 官方 Banner 规范</b>——Leanback Launcher 在横版槽位读的是 <code>android:banner</code>（320×180 dp，xhdpi 下即 640×360 px），不是 <code>android:icon</code>。原工程用的是系统图库图标且完全没有 banner，已一并修好。</p>
+<pre><span class="c"><!-- AndroidManifest.xml · 已改动 --></span>
+<application
+    <span class="k">android:icon</span>=<span class="v">"@mipmap/ic_launcher"</span>
+    <span class="k">android:banner</span>=<span class="v">"@drawable/banner"</span>   <span class="c"><!-- 新增：TV 主屏幕横幅 --></span>
+    ... >
+    <activity
+        <span class="k">android:name</span>=<span class="v">".MainActivity"</span>
+        <span class="k">android:banner</span>=<span class="v">"@drawable/banner"</span>   <span class="c"><!-- 新增：显式指定更稳 --></span>
+        ... /></pre>
+<div class="note">已写入工程 <b>res/</b> 的资源：<code>mipmap-{m,h,xh,xxh,xxxh}dpi/ic_launcher.png</code>（48/72/96/144/192）、<code>drawable-{m,h,xh,xxh}dpi/banner.png</code>（320×180 / 480×270 / 640×360 / 960×540）、<code>drawable-nodpi/zq_wide_960x320.png</code>。<b>已全部同步进工程 res/，自 v4.4 起、当前 v4.6 (code 62) 均打进 APK。</b></div>
+
+<h2>几点建议</h2>
+<ul class="tips">
+<li><b>焦点态别用静态图。</b> 本交付里的 <code>*_focus.png</code> 是设计参考，正式实现请交给代码：Launcher 的放大由系统做，应用内沿用项目已有的 <code>focusZoom()</code> / selector。若图片和代码同时放大，会出现双重缩放、边缘发虚。</li>
+<li><b>默认版不带 NEW 角标。</b> 角标会过时且缩小后糊，已单独放 <code>variants/zq_wide_960x320_new.png</code>，需要时再启用。超宽版右侧留白是刻意留给动态控件的。</li>
+<li><b>slogan 在小尺寸降级。</b> 480×160 及以下的横版建议省略「好片随心看」；当前 640×360 主档保留，字号约 26px，1080p 下仍可读。</li>
+<li><b>正方形留了 10% 安全边距。</b> 电视桌面常自带圆角遮罩，会二次裁切；另备直角版 <code>variants/zq_square_512_nocorner.png</code>，将来做 Android 8+ Adaptive Icon 时可直接当背景层（108dp 画布、中心 66dp 安全区）。</li>
+<li><b>浅色版不建议做。</b> 电视 UI 恒为深色，图标已有不透明底，深、浅壁纸都验证可读；再维护一套浅色图标收益很低。</li>
+</ul>
+
+<h2>交付清单</h2>
+<div class="filetree">app-icons/
+├─ preview.html                        本预览页
+├─ 01-square/
+│   ├─ zq_square_512.png / 256 / 128   正方形主图标
+│   ├─ zq_square_512_focus.png         焦点态
+│   └─ zq_square.svg                   矢量源文件
+├─ 02-banner-16x9/
+│   ├─ zq_banner_640x360.png           主档（TV Banner 规范）
+│   ├─ zq_banner_320x180.png / 1280x720.png
+│   ├─ zq_banner_640x360_focus.png
+│   └─ zq_banner_16x9.svg
+├─ 03-wide-3x1/
+│   ├─ zq_wide_960x320.png             主档
+│   ├─ zq_wide_480x160.png / 1920x640.png
+│   ├─ zq_wide_960x320_focus.png
+│   └─ zq_wide_3x1.svg
+├─ variants/                           直角版 / NEW 角标版
+├─ android-res/                        可直接拷入 res/ 的全密度资源
+└─ _build/gen_icons.py                 生成脚本（改色值/文案后可一键重出）</div>
+
+<footer>
+生成方式：Python + Pillow，4× 超采样抗锯齿；汉字由系统字体渲染，非 AI 绘制。<br>
+SVG 为可编辑矢量源（文字保留为文本节点，字体栈 Microsoft YaHei / Noto Sans CJK SC）；如需交付印刷或第三方设计工具，请在对应工具里执行一次「文字转曲」以消除字体依赖。<br>
+色值、坐标、尺寸常量集中在 <b>_build/gen_icons.py</b> 顶部，改一处即可整套重出。<br>
+<b style="color:var(--cyan)">当前版本：「强」字版 v4.6 / versionCode 62 · 2026-11-16 · 交付 APK：dist/dushetv-v4.6.apk · 升级地址 https://7vga.cn/zqnew/update.json</b>
+</footer>
+</div>
+
+<script>
+function toggleTheme(){
+  var h=document.documentElement;
+  h.setAttribute('data-theme', h.getAttribute('data-theme')==='light'?'dark':'light');
+}
+var imgs={
+  1:['01-square/zq_square_512.png','01-square/zq_square_512_focus.png'],
+  2:['02-banner-16x9/zq_banner_640x360.png','02-banner-16x9/zq_banner_640x360_focus.png'],
+  3:['03-wide-3x1/zq_wide_960x320.png','03-wide-3x1/zq_wide_960x320_focus.png']
+};
+function setImg(n,focus,btn){
+  document.getElementById('i'+n).src=imgs[n][focus?1:0];
+  var bs=btn.parentNode.querySelectorAll('button');
+  for(var i=0;i<bs.length;i++) bs[i].classList.remove('on');
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

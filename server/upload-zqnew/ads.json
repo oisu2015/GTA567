@@ -1,0 +1,8 @@
+{
+  "topButtons": [
+    { "label": "留言", "type": "wechat", "name": "七微电脑" }
+  ],
+  "wechat": {
+    "name": "七微电脑"
+  }
+}

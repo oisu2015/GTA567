@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 统一按钮焦点态：亮蓝色圆角粗边（普通 shape，最小尺寸 0，与 btn_dark 完全一致，
+     避免 WRAP_CONTENT 按钮在聚焦/失焦时因背景尺寸差而“变大/缩小回去”）。
+     视觉提示完全由「亮蓝边 + 代码 1.1 放大」提供。 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#2c2c2c" />
+    <stroke android:width="3dp" android:color="#29B6F6" />
+    <corners android:radius="10dp" />
+</shape>

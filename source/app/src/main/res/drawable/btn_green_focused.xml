@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 通用按钮选中态：更亮淡黄 + 光晕（焦点时醒目） -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 外发光 -->
+    <item
+        android:left="3dp"
+        android:top="3dp"
+        android:right="-4dp"
+        android:bottom="-4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#66ffffff" />
+            <corners android:radius="11dp" />
+        </shape>
+    </item>
+    <!-- 按钮 -->
+    <item
+        android:left="0dp"
+        android:top="0dp"
+        android:right="3dp"
+        android:bottom="3dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#FFF8D8"
+                android:centerColor="#FFEDB0"
+                android:endColor="#FFE082"
+                android:angle="270" />
+            <corners android:radius="10dp" />
+            <stroke android:width="2dp" android:color="#ffffff" />
+        </shape>
+    </item>
+</layer-list>

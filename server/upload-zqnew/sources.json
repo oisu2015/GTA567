@@ -1,0 +1,18 @@
+[
+  { "name": "非凡资源", "api": "http://cj.ffzyapi.com/api.php/provide/vod" },
+  { "name": "量子资源", "api": "https://cj.lziapi.com/api.php/provide/vod" },
+  { "name": "索尼资源", "api": "https://suoniapi.com/api.php/provide/vod" },
+  { "name": "暴风资源", "api": "https://bfzyapi.com/api.php/provide/vod" },
+  { "name": "魔都资源", "api": "https://www.mdzyapi.com/api.php/provide/vod" },
+  { "name": "U酷资源", "api": "https://api.ukuapi.com/api.php/provide/vod" },
+  { "name": "IK酷资源", "api": "https://ikunzyapi.com/api.php/provide/vod" },
+  { "name": "百度采集", "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list" },
+  { "name": "虎牙采集", "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8" },
+  { "name": "淘片采集", "api": "https://taopianapi.com/cjapi/mc/vod/json.html" },
+  { "name": "量子资源2", "api": "https://lzizy1.com/api.php/provide/vod/" },
+  { "name": "非凡资源2", "api": "http://ffzy1.tv/api.php/provide/vod/" },
+  { "name": "火狐采集", "api": "https://hhzyapi.com/api.php/provide/vod/" },
+  { "name": "1080高清资源库", "api": "https://api.yyzy-tv.vip/inc/apijson.php" },
+  { "name": "金鹰资源", "api": "https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/json" },
+  { "name": "红牛资源", "api": "https://www.hongniuzy2.com/api.php/provide/vod/at/josn/" }
+]

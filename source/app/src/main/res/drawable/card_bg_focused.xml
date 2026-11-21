@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 选中态卡片：金黄粗边 + 内发光（对称正 inset，最小尺寸与默认态一致，避免尺寸错位） -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 内发光（绘制在主体内侧，不超出视图，无负 inset） -->
+    <item
+        android:left="2dp"
+        android:top="2dp"
+        android:right="2dp"
+        android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#26FFD54F" />
+            <corners android:radius="9dp" />
+        </shape>
+    </item>
+    <!-- 卡片主体：黑底 + 金黄粗描边 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#2f2f2f" />
+            <stroke android:width="3dp" android:color="#FFD54F" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+</layer-list>

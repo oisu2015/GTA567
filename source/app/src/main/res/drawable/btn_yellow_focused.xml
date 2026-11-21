@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 选集按钮：选中(当前播放)态焦点高亮——更亮黄 + 光晕 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 外发光 -->
+    <item
+        android:left="3dp"
+        android:top="3dp"
+        android:right="-4dp"
+        android:bottom="-4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#55ffffff" />
+            <corners android:radius="9dp" />
+        </shape>
+    </item>
+    <!-- 按钮 -->
+    <item
+        android:left="0dp"
+        android:top="0dp"
+        android:right="3dp"
+        android:bottom="3dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#FFE57F"
+                android:centerColor="#FFF59D"
+                android:endColor="#FFD54F"
+                android:angle="270" />
+            <corners android:radius="8dp" />
+            <stroke android:width="2dp" android:color="#ffffff" />
+        </shape>
+    </item>
+</layer-list>

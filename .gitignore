@@ -1,0 +1,33 @@
+# ---- 构建产物 ----
+source/app/build/
+source/build/
+source/.gradle/
+source/app/.cxx/
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ---- 机器相关（不入库） ----
+source/local.properties
+source/keystore/
+
+# ---- 原生库（v1.5 起不参与打包，jniLibs.srcDirs=[]） ----
+source/app/src/main/jniLibs/
+
+# ---- 发布产物：APK 本体只留 release/，其余 apk 不入库 ----
+dist/*.apk
+server/upload-zqnew/*.apk
+!release/
+
+# ---- 图标生成的重型中间产物 ----
+app-icons/_build/*.png
+app-icons/_build/*_preview.html
+app-icons/_build/*_preview.png
+app-icons/android-res/
+
+# ---- 其他 ----
+*.log
+.DS_Store
+Thumbs.db

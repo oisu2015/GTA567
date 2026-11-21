@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 选集/播放按钮：圆角淡黄立体（未看）；文字深棕配淡黄底 -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ep"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="48dp"
+    android:gravity="center"
+    android:padding="10dp"
+    android:textColor="#4a3b00"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    android:background="@drawable/btn_dark"
+    android:shadowColor="#664400"
+    android:shadowDx="1"
+    android:shadowDy="1"
+    android:shadowRadius="2" />

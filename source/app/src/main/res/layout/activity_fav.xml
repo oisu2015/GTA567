@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 收藏页：上半区「观看记录」（播放过的影片自动记录，显示看到第几集），
+     下半区「我的收藏」（手动收藏）。两个网格，点按进详情，长按移除。 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="收藏 · 观看记录"
+            android:textColor="#ffffff"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="← 返回"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_dark"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:focusable="true"
+            android:clickable="true" />
+    </LinearLayout>
+
+    <!-- 上半区：观看记录（自动） -->
+    <TextView
+        android:id="@+id/watchHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="▶ 观看记录"
+        android:textColor="#FFD54F"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="4dp" />
+
+    <GridView
+        android:id="@+id/watchGrid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:numColumns="6"
+        android:verticalSpacing="14dp"
+        android:horizontalSpacing="14dp"
+        android:padding="4dp"
+        android:gravity="center"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:drawSelectorOnTop="false"
+        android:listSelector="@android:color/transparent"
+        android:descendantFocusability="afterDescendants" />
+
+    <TextView
+        android:id="@+id/watchEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="还没有观看记录，播放过的影片会自动出现在这里"
+        android:textColor="#888888"
+        android:textSize="14sp"
+        android:padding="8dp"
+        android:visibility="gone" />
+
+    <!-- 下半区：手动收藏 -->
+    <TextView
+        android:id="@+id/favHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="★ 我的收藏"
+        android:textColor="#66ccff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="4dp" />
+
+    <GridView
+        android:id="@+id/favGrid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:numColumns="6"
+        android:verticalSpacing="14dp"
+        android:horizontalSpacing="14dp"
+        android:padding="4dp"
+        android:gravity="center"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:drawSelectorOnTop="false"
+        android:listSelector="@android:color/transparent"
+        android:descendantFocusability="afterDescendants" />
+
+    <TextView
+        android:id="@+id/favEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="还没有收藏。在影片详情页点「收藏」即可加入这里"
+        android:textColor="#888888"
+        android:textSize="14sp"
+        android:padding="8dp"
+        android:visibility="gone" />
+</LinearLayout>

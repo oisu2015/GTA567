@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 选集按钮：当前/选定集（默认第一集）——绿色立体，明显区别于未看(黄)/看过(灰) -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 底部阴影 -->
+    <item
+        android:left="2dp"
+        android:top="2dp"
+        android:right="-3dp"
+        android:bottom="-3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#a01b5e20" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+    <!-- 按钮主体：渐变绿 -->
+    <item
+        android:left="0dp"
+        android:top="0dp"
+        android:right="2dp"
+        android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#A5D6A7"
+                android:centerColor="#66BB6A"
+                android:endColor="#43A047"
+                android:angle="270" />
+            <corners android:radius="10dp" />
+            <stroke android:width="1dp" android:color="#2E7D32" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- v4.6 加载中标签：深蓝底 + 青色描边，与滚动海报加载层的配色一致 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#E6091222" />
+    <corners android:radius="16dp" />
+    <stroke android:width="2dp" android:color="#22D3EE" />
+</shape>

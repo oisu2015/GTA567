@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dushetv.box">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 开机自启动：仅在设备真正重启 / 断电后来电时拉起主界面（电视待机唤醒不触发） -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.hardware.faketouch" android:required="false" />
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:largeHeap="true"
+        android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:banner="@drawable/banner"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+
+        <activity
+            android:name=".MainActivity"
+            android:banner="@drawable/banner"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 开机自启动：真正重启后自动进入主界面（不影响待机唤醒，详见 BootReceiver 注释） -->
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".DetailActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+            android:exported="false" />
+
+        <activity
+            android:name=".PlayerActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".SearchActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name=".FavActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+            android:exported="false" />
+
+        <activity
+            android:name=".MoreActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!-- 设置页（取代原「换接口」弹窗）：列数 / 自启动开关 / 影视接口 -->
+        <activity
+            android:name=".SettingsActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+    </application>
+
+</manifest>

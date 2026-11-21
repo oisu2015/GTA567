@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 选集按钮：看过态——灰色立体（与未看淡黄、当前金黄区分） -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 底部阴影 -->
+    <item
+        android:left="2dp"
+        android:top="2dp"
+        android:right="-3dp"
+        android:bottom="-3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#a02e2e2e" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+    <!-- 按钮主体：渐变灰 -->
+    <item
+        android:left="0dp"
+        android:top="0dp"
+        android:right="2dp"
+        android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#C9C9C9"
+                android:centerColor="#BDBDBD"
+                android:endColor="#B0B0B0"
+                android:angle="270" />
+            <corners android:radius="10dp" />
+            <stroke android:width="1dp" android:color="#9E9E9E" />
+        </shape>
+    </item>
+</layer-list>

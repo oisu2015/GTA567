@@ -1,0 +1,7 @@
+// DuSheNative top-level build file
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}

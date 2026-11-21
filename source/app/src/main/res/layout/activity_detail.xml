@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 详情页：黑色渐变立体背景 + 四周 50dp 边距 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:orientation="vertical"
+    android:padding="50dp">
+
+    <!-- 主体内容（原横向布局：左海报+信息，右线路+选集），占满整个可用空间 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <!-- 左侧：海报 + 信息 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/poster"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:background="#222222" />
+
+            <!-- 片名行：片名 + 收藏按钮 同一行，进详情页第一眼可见 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:clipChildren="false"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3" />
+
+                <TextView
+                    android:id="@+id/fav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="☆ 收藏"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/btn_dark"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:focusable="true"
+                    android:clickable="true" />
+
+                <TextView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="← 返回"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/btn_dark"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:focusable="true"
+                    android:clickable="true" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/remarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#ffcc33"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="4"
+                android:textColor="#bbbbbb"
+                android:textSize="13sp"
+                android:lineSpacingMultiplier="1.2" />
+        </LinearLayout>
+
+        <!-- 右侧：线路 + 选集 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:focusable="true"
+                android:descendantFocusability="afterDescendants">
+
+                <LinearLayout
+                    android:id="@+id/srcs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:clipChildren="false"
+                    android:padding="4dp" />
+            </HorizontalScrollView>
+
+            <GridView
+                android:id="@+id/eps"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns="4"
+                android:verticalSpacing="8dp"
+                android:horizontalSpacing="8dp"
+                android:padding="6dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:drawSelectorOnTop="false"
+                android:listSelector="@android:color/transparent"
+                android:gravity="center"
+                android:descendantFocusability="afterDescendants" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

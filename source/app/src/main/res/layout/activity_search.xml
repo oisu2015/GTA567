@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 独立搜索页：统一布局（720 / 1080 通用） -->
+<!-- 顶部：搜索框整行 100% 宽，右侧放「中文/英文」切换与「搜索」按钮 -->
+<!-- 下部左右分栏：左列=搜索历史 + 热搜榜；右列=中文拼音键盘 + 输入键盘 -->
+<!-- 中文模式 = 拼音键盘：打拼音出汉字候选；英文模式 = 字母键盘 -->
+<!-- 全部用嵌套 LinearLayout 的 chip 行，保证电视遥控器方向键导航可预期 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- 顶部：返回按钮 + 搜索框 100% 占一整行（中文切换 + 搜索按钮同行右置） -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="← 返回"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_dark"
+            android:padding="12dp"
+            android:focusable="true"
+            android:clickable="true" />
+
+        <EditText
+            android:id="@+id/box"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:hint="输入片名 / 演员 / 关键字"
+            android:textColorHint="#888888"
+            android:background="#1c1c1c"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:inputType="text|textNoSuggestions"
+            android:imeOptions="actionSearch" />
+
+        <TextView
+            android:id="@+id/langToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="中文"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_dark"
+            android:padding="12dp"
+            android:focusable="true"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="搜 索"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_dark"
+            android:padding="12dp"
+            android:focusable="true"
+            android:clickable="true" />
+    </LinearLayout>
+
+    <!-- 下部：左右分栏（720 / 1080 同一套布局） -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <!-- 左列：搜索历史 + 热搜榜 -->
+        <LinearLayout
+            android:id="@+id/leftCol"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="搜索历史"
+                android:textColor="#ffcc33"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="6dp" />
+
+            <!-- 历史：两行（每行 4 个），超出用「更多」开新页 -->
+            <LinearLayout
+                android:id="@+id/histRow1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+            <LinearLayout
+                android:id="@+id/histRow2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp" />
+            <TextView
+                android:id="@+id/moreHist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="更多 ›"
+                android:textColor="#66ccff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="6dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:visibility="gone" />
+
+            <!-- 热搜榜 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="热搜榜（按搜索量）"
+                android:textColor="#ff8866"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp" />
+
+            <LinearLayout
+                android:id="@+id/hotChips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/moreHot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="更多 ›"
+                android:textColor="#ff8866"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="4dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- 右列：中文拼音 + 输入键盘（左右比 1:3，键盘为主、历史热搜为辅） -->
+        <FrameLayout
+            android:id="@+id/keyboardFrame"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:layout_marginStart="16dp">
+
+            <!-- 英文键盘 -->
+            <LinearLayout
+                android:id="@+id/keyboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone" />
+
+            <!-- 中文拼音键盘：拼音显示 + 候选条 + 字母键盘 -->
+            <LinearLayout
+                android:id="@+id/cnPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- 拼音显示 -->
+                <TextView
+                    android:id="@+id/pyText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="拼音："
+                    android:textColor="#ffcc33"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+
+                <!-- 候选汉字条（横向滚动，可焦点移动；点选即填入搜索框） -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:id="@+id/candRow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="4dp" />
+                </HorizontalScrollView>
+
+                <!-- 拼音字母键盘（动态生成） -->
+                <LinearLayout
+                    android:id="@+id/cnKeyboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

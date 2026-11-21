@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 黑色径向渐变立体背景 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <!-- ===== Apple TV 风格背景层：自定义高清壁纸（远程可配，默认透明→露出下方渐变）+ 暗色遮罩 ===== -->
+    <!-- 壁纸图（CENTER_CROP 铺满）；默认无图→透明，露出 root 的 bg_gradient 渐变 -->
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:focusable="false"
+        android:clickable="false" />
+
+    <!-- 暗色遮罩：保证壁纸上任何亮色区域，前景卡片 / 文字仍清晰可读 -->
+    <View
+        android:id="@+id/bgDim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:focusable="false"
+        android:clickable="false" />
+
+    <!-- 内容区：左右边距 30dp、上下边距 20dp。四个边缘按钮就在这圈边距里，
+         它们用 focusable=false 的半透明长条，绝对不会盖到中间的影片卡片 -->
+    <LinearLayout
+        android:id="@+id/home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:descendantFocusability="afterDescendants">
+
+        <!-- 标题栏：软件名 + 源名 + 操作按钮 -->
+        <!-- v4.6：标题栏容器只做布局，不再可聚焦。
+             以前它 focusable=true 却没有焦点样式，会抢走「从分类行按上」的焦点，
+             表现为遥控器上不去顶部导航按钮。 -->
+        <LinearLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="10dp"
+            android:focusable="false">
+
+            <!-- 标题：仅占用自身需要的宽度（不再平分半屏），把剩余空间让给右侧导航按钮，使其全部展示 -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="致强视频"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3"
+                android:singleLine="true"
+                android:ellipsize="end" />
+
+            <!-- 操作按钮栏（搜索/收藏/切换源/测速/换接口） -->
+            <HorizontalScrollView
+                android:id="@+id/actions_scroll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scrollbars="none"
+                android:paddingStart="14dp"
+                android:focusable="false"
+                android:descendantFocusability="afterDescendants">
+
+            <LinearLayout
+                android:id="@+id/actions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clipChildren="false"
+                android:padding="2dp" />
+            </HorizontalScrollView>
+
+            <!-- 天气预报（Apple TV 风格右上角）：城市 · 温度 · 天气；点击可切换城市；无网络/失败时静默隐藏 -->
+            <TextView
+                android:id="@+id/weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end|center_vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:background="#22ffffff"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3"
+                android:singleLine="true"
+                android:focusable="true"
+                android:clickable="true"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- 分类导航条 -->
+        <HorizontalScrollView
+            android:id="@+id/cats_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:focusable="false"
+            android:nextFocusUp="@+id/actions_scroll"
+            android:nextFocusDown="@+id/grid"
+            android:descendantFocusability="afterDescendants">
+
+            <LinearLayout
+                android:id="@+id/cats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clipChildren="false"
+                android:padding="4dp" />
+        </HorizontalScrollView>
+
+        <!-- 影片网格区域：6列 × 5行 = 30条/页，正好一屏 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <GridView
+                android:id="@+id/grid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns="6"
+                android:verticalSpacing="14dp"
+                android:horizontalSpacing="14dp"
+                android:padding="6dp"
+                android:gravity="center"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:drawSelectorOnTop="false"
+                android:listSelector="@android:color/transparent"
+                android:nextFocusUp="@+id/cats_scroll"
+                android:descendantFocusability="afterDescendants" />
+
+            <!-- v4.6 加载层：截图上下裁剪后的海报长图，双层不同速度上下循环滚动叠加，
+                 数据加载期间盖住空白网格，不再让用户对着空白 + 小转圈等。 -->
+            <com.dushetv.box.LoadingPosterView
+                android:id="@+id/loadingPosters"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:clickable="false"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/loadingLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="22dp"
+                android:paddingRight="22dp"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:background="@drawable/loading_label_bg"
+                android:focusable="false"
+                android:clickable="false"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:indeterminate="true"
+                    android:focusable="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingStart="14dp"
+                    android:text="正在加载影片…"
+                    android:textColor="#eaf4ff"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:focusable="false" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- ===== 四个边缘翻页/滚动按钮（位于内容边距带内，半透明，绝不遮挡卡片） ===== -->
+
+    <!-- 左边缘：上一页（仅非第一页时显示） -->
+    <LinearLayout
+        android:id="@+id/prevBtn"
+        android:layout_width="28dp"
+        android:layout_height="140dp"
+        android:layout_gravity="left|center_vertical"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#55000000"
+        android:focusable="false"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="‹"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上一页"
+            android:textColor="#ffffff"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- 右边缘：下一页（仅还有更多时显示） -->
+    <LinearLayout
+        android:id="@+id/nextBtn"
+        android:layout_width="28dp"
+        android:layout_height="140dp"
+        android:layout_gravity="right|center_vertical"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#55000000"
+        android:focusable="false"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="›"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下一页"
+            android:textColor="#ffffff"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- 上边缘：回到顶部（本页内） -->
+    <LinearLayout
+        android:id="@+id/topBtn"
+        android:layout_width="130dp"
+        android:layout_height="18dp"
+        android:layout_gravity="top|center_horizontal"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#55000000"
+        android:focusable="false"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="↑ 顶部"
+            android:textColor="#ffffff"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- 下边缘：跳到本页底部 -->
+    <LinearLayout
+        android:id="@+id/bottomBtn"
+        android:layout_width="130dp"
+        android:layout_height="18dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#55000000"
+        android:focusable="false"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="↓ 底部"
+            android:textColor="#ffffff"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/prog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+</FrameLayout>
