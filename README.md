@@ -1,9 +1,13 @@
+<p align="center">
+  <img src="app-icons/variants/zq_wide_960x320_new.png" alt="致强视频 · DuSheNative" width="520"/>
+</p>
+
 # 致强视频 · DuSheNative
 
 > 一款面向 **老电视 / 电视盒子**（Android 4.1~4.4、1G 内存）的**原生** Android TV 影视客户端。
 > 不依赖 WebView，UI 与播放器全部原生渲染；内置 **ExoPlayer 2.14.2**，软解 m3u8/HLS，老盒子也能流畅播放。
 
-**当前版本：v4.7 · versionCode 63 · 包名 `com.dushetv.box`**
+**当前版本：v4.7 · versionCode 63 · 包名 `com.dushetv.box`** &nbsp;|&nbsp; [English README](README.en.md)
 
 ---
 
