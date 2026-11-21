@@ -26,9 +26,15 @@
 | 收藏 / 历史 | 本地收藏 + 观看历史 |
 | 远程配置 | 升级通道、直连源列表、广告 / 壁纸 / 天气均由远程 JSON 下发，可静默更新 |
 
-## 截图 / 品牌
+## 界面预览
 
-品牌图标为「强」字 + 青色播放三角，三款规格（1:1 / 16:9 / 3:1）与生成脚本见 [`app-icons/`](app-icons/)，预览页 [`app-icons/preview.html`](app-icons/preview.html)。
+客户端在电视 / 盒子上运行的实测截图（MuMu 模拟器，横屏）：
+
+| 首页浏览 | 详情 / 列表 |
+|---|---|
+| ![首页](screenshots/screenshot-1.jpg) | ![详情](screenshots/screenshot-2.jpg) |
+
+> 更多界面与品牌：品牌图标为「强」字 + 青色播放三角，三款规格（1:1 / 16:9 / 3:1）与生成脚本见 [`app-icons/`](app-icons/)，预览页 [`app-icons/preview.html`](app-icons/preview.html)。
 
 ## 快速开始（30 秒上手）
 
@@ -88,6 +94,7 @@ GTA567/
 │       └── src/main/          # Java 源码 + res 资源 + AndroidManifest
 ├── release/
 │   └── dushetv-v4.7.apk       # 成品安装包
+├── screenshots/               # 客户端界面截图（MuMu 模拟器实测）
 ├── server/                    # 远程配置示例（升级通道 / 广告 / 源列表）
 └── app-icons/                 # 品牌图标（生成脚本 + 三规格 PNG）
 ```
@@ -100,6 +107,20 @@ GTA567/
 | v4.6 | 62 | 遥控器「上」键两级回顶导航栏；滚动海报加载动画 |
 | v4.5 | 61 | 升级通道迁到自有站点 7vga.cn/zqnew |
 | v4.4 | 60 | 品牌图标由「致」改为「强」字版 |
+
+## 常见问题（FAQ）
+
+**1. 仓库没有签名密钥，APK 还能用吗？**
+能用。`release/dushetv-v4.7.apk` 是**已签名**的成品安装包，直接安装即可运行，**完全不需要密钥**。签名密钥只在「重新打包 / 以后发新版」时才需要——它不公开，是为了防止他人伪造同签名的安装包，与使用无关。
+
+**2. 克隆源码构建出来的 APK 和 release/ 里的一样吗？**
+功能一样，但**签名不同**。仓库里的 `source/` 不含正式签名密钥，构建时若没有密钥会自动生成一把演示密钥（`app/build.gradle` 的 `ensureKeystore` 任务）。因此自己构建的 APK 可以安装使用，但**不能覆盖安装官方 release/ 版**（签名不同需先卸载）；要用作正式发布，请替换成你自己的 keystore 并修改 `signingConfigs.compat`。
+
+**3. 需要什么环境才能构建？**
+JDK 17 + Android SDK（`local.properties` 填 `sdk.dir`）。仓库已内置 **Gradle 8.4 wrapper**，无需单独装 Gradle：`./gradlew assembleRelease` 即可。
+
+**4. 想改默认源 / 加源？**
+编辑 `source/app/src/main/java/com/dushetv/box/MainActivity.java` 里的 `BUILTIN_DIRECT`，加一行 `{"名字","https://接口地址"}`。
 
 ## 许可
 
